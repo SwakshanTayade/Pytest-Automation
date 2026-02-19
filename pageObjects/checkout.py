@@ -19,7 +19,7 @@ class CheckoutPage(Util):
         list = self.driver.find_elements(*self.countryList)
         for i in list:
             if i.text == expectedCountry:
-                print("Selected country is: ",i.text)
+                print("Selected Country is (changed by develop branch): ",i.text)
                 i.click()
                 break
         wait.until(expected_conditions.presence_of_element_located(self.checkBox))
