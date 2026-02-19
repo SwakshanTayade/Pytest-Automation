@@ -1,0 +1,7 @@
+pytest
+selenium
+pytest-html #pytest --html="report.html"
+pytest-xdist #pytest -n 2
+
+#common command:
+# py.test -n 2 -m smoke --browser_name edge --html=report/report.html
