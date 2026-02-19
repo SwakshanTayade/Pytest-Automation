@@ -26,5 +26,5 @@ class CheckoutPage(Util):
         self.driver.find_element(*self.checkBox).click()
         self.driver.find_element(*self.submitBtn).click()
         message = self.driver.find_element(*self.msg).text 
-        print(message)
+        print("The message: ",message)
         assert "Success" in message
