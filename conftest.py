@@ -3,6 +3,7 @@ import pytest
 from datetime import datetime
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 driver = None
 
 # config options adoption/ registration
@@ -18,12 +19,19 @@ def browserInvoke(request):
     global driver
     print("Broswer Initiated")
     browser_name =  request.config.getoption("browsername")
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")
     if browser_name == "chrome":
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
     elif browser_name == "edge":
-        driver = webdriver.Edge()
-    driver.maximize_window()
+        driver = webdriver.Edge(options=options)
+    # driver.maximize_window()
     driver.implicitly_wait(5)
+    request.cls.driver = driver
     yield driver
     driver.quit()
 
