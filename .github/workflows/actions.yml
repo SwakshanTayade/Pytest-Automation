@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [ main, develop ]
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "18 12 * * *"   
+  workflow_dispatch:        
 
 jobs:
   test:
@@ -26,6 +27,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest selenium pytest-html
+
+      - name: Show UTC and IST
+        run: |
+          echo "UTC now:" && date -u
+          echo "IST now:" && TZ='Asia/Kolkata' date
 
       - name: Run tests (headless)
         run: |
