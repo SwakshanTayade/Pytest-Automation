@@ -1,3 +1,4 @@
+# cron activation test
 name: Simple Pytest CI
 
 on:
